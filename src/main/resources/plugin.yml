@@ -1,0 +1,10 @@
+name: MenuBuilder
+main: org.inventivetalent.menubuilder.MenuBuilderPlugin
+author: inventivetalent
+version: ${project.version}
+
+softdepend: [ItemBuilder]
+
+commands:
+  mbchat:
+    aliases: []
