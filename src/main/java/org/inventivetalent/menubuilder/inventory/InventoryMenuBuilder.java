@@ -10,8 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import org.inventivetalent.menubuilder.MenuBuilder;
 import org.inventivetalent.menubuilder.MenuBuilderPlugin;
 
-import javax.annotation.Nonnegative;
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -128,7 +126,7 @@ public class InventoryMenuBuilder extends MenuBuilder<Inventory> {
 	 * @param title new title of the inventory
 	 * @return the InventoryMenuBuilder
 	 */
-	public InventoryMenuBuilder withTitle(@Nonnull String title) {
+	public InventoryMenuBuilder withTitle(String title) {
 		return withTitle(title, true);
 	}
 
@@ -139,7 +137,7 @@ public class InventoryMenuBuilder extends MenuBuilder<Inventory> {
 	 * @param refresh if <code>true</code>, the inventory will be re-opened to all viewers
 	 * @return the InventoryMenuBuilder
 	 */
-	public InventoryMenuBuilder withTitle(@Nonnull String title, boolean refresh) {
+	public InventoryMenuBuilder withTitle(String title, boolean refresh) {
 		validateInit();
 		InventoryHelper.changeTitle(this.inventory, title);
 
@@ -158,7 +156,7 @@ public class InventoryMenuBuilder extends MenuBuilder<Inventory> {
 	 * @param eventHandler {@link InventoryEventHandler} to add
 	 * @return the InventoryMenuBuilder
 	 */
-	public InventoryMenuBuilder withEventHandler(@Nonnull InventoryEventHandler eventHandler) {
+	public InventoryMenuBuilder withEventHandler(InventoryEventHandler eventHandler) {
 		try {
 			MenuBuilderPlugin.instance.inventoryListener.registerEventHandler(this, eventHandler);
 		} catch (IllegalArgumentException e) {
@@ -174,7 +172,7 @@ public class InventoryMenuBuilder extends MenuBuilder<Inventory> {
 	 * @param actions  the {@link ClickType}s the listener should listen for (you can also use {@link #ALL_CLICK_TYPES} or {@link ClickType#values()}
 	 * @return the InventoryMenuBuilder
 	 */
-	public InventoryMenuBuilder onInteract(@Nonnull InventoryMenuListener listener, @Nonnull ClickType... actions) {
+	public InventoryMenuBuilder onInteract(InventoryMenuListener listener, ClickType... actions) {
 		if (actions == null || (actions != null && actions.length == 0)) {
 			throw new IllegalArgumentException("must specify at least one action");
 		}
@@ -193,7 +191,7 @@ public class InventoryMenuBuilder extends MenuBuilder<Inventory> {
 	 * @param item {@link ItemStack} to set
 	 * @return the InventoryMenuBuilder
 	 */
-	public InventoryMenuBuilder withItem(@Nonnegative int slot, @Nonnull ItemStack item) {
+	public InventoryMenuBuilder withItem(int slot, ItemStack item) {
 		validateInit();
 		this.inventory.setItem(slot, item);
 		return this;
@@ -208,7 +206,7 @@ public class InventoryMenuBuilder extends MenuBuilder<Inventory> {
 	 * @param actions  the {@link ClickType}s the listener should listen for (you can also use {@link #ALL_CLICK_TYPES} or {@link ClickType#values()}
 	 * @return the InventoryMenuBuilder
 	 */
-	public InventoryMenuBuilder withItem(@Nonnegative final int slot, @Nonnull final ItemStack item, @Nonnull final ItemListener listener, @Nonnull ClickType... actions) {
+	public InventoryMenuBuilder withItem(final int slot, final ItemStack item, final ItemListener listener, ClickType... actions) {
 		withItem(slot, item);
 		onInteract(new InventoryMenuListener() {
 			@Override
@@ -226,7 +224,7 @@ public class InventoryMenuBuilder extends MenuBuilder<Inventory> {
 	 * @param callback {@link ItemCallback}
 	 * @return the InventoryMenuBuilder
 	 */
-	public InventoryMenuBuilder withItem(@Nonnull ItemCallback callback) {
+	public InventoryMenuBuilder withItem(ItemCallback callback) {
 		callbackItems.add(callback);
 		return this;
 	}

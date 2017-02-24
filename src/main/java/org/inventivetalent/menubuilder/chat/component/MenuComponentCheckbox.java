@@ -6,8 +6,6 @@ import org.inventivetalent.menubuilder.ValueListener;
 import org.inventivetalent.menubuilder.chat.ChatListener;
 import org.inventivetalent.menubuilder.chat.LineBuilder;
 
-import javax.annotation.Nonnull;
-
 /**
  * Checkbox MenuComponent
  * States are either <code>true</code> or <code>false</code> (checked/unchecked) returned by {@link #isChecked()}
@@ -50,7 +48,7 @@ public class MenuComponentCheckbox extends MenuComponent {
 	 * @param format the new format, must contain a variable (e.g. <i>%s</i>
 	 * @return the Checkbox
 	 */
-	public MenuComponentCheckbox withFormat(@Nonnull String format) {
+	public MenuComponentCheckbox withFormat(String format) {
 		this.format = format;
 		updateText();
 		return this;
@@ -62,7 +60,7 @@ public class MenuComponentCheckbox extends MenuComponent {
 	 * @param stringChecked the new string
 	 * @return the Checkbox
 	 */
-	public MenuComponentCheckbox withCheckedString(@Nonnull String stringChecked) {
+	public MenuComponentCheckbox withCheckedString( String stringChecked) {
 		this.stringChecked = stringChecked;
 		updateText();
 		return this;
@@ -74,7 +72,7 @@ public class MenuComponentCheckbox extends MenuComponent {
 	 * @param stringUnchecked the new string
 	 * @return the Checkbox
 	 */
-	public MenuComponentCheckbox withUncheckedString(@Nonnull String stringUnchecked) {
+	public MenuComponentCheckbox withUncheckedString( String stringUnchecked) {
 		this.stringUnchecked = stringUnchecked;
 		updateText();
 		return this;

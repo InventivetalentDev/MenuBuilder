@@ -7,7 +7,6 @@ import org.bukkit.entity.Player;
 import org.inventivetalent.menubuilder.MenuBuilder;
 import org.inventivetalent.menubuilder.MenuBuilderPlugin;
 
-import javax.annotation.Nonnegative;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +48,7 @@ public class ChatMenuBuilder extends MenuBuilder<BaseComponent[]> {
 	 * @param builder {@link LineBuilder} to add
 	 * @return the ChatMenuBuilder
 	 */
-	public ChatMenuBuilder withLine(@Nonnegative int index, LineBuilder builder) {
+	public ChatMenuBuilder withLine(int index, LineBuilder builder) {
 		listenerKeys.addAll(builder.listenerKeys);
 		builder.withContainer(this);
 		if (lines.size() <= index) { this.lines.add(index, builder.build()); } else { this.lines.set(index, builder.build()); }
