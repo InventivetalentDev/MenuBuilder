@@ -1,7 +1,11 @@
 package org.inventivetalent.menubuilder.inventory;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
+import org.bukkit.event.Event.Result;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -9,11 +13,6 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.inventivetalent.menubuilder.MenuBuilderPlugin;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class InventoryListener implements Listener {
 
@@ -68,10 +67,17 @@ public class InventoryListener implements Listener {
 		Player player = (Player) event.getWhoClicked();
 		Inventory inventory = event.getClickedInventory();
 		ClickType type = event.getClick();
+                
+                Inventory playerOpenInventory = player.getOpenInventory().getTopInventory();
+                
+                if(listenerMap.containsKey(playerOpenInventory) ||eventHandlerMap.containsKey(playerOpenInventory)){
+                    event.setCancelled(true);
+                    event.setResult(Result.DENY);
+                }
 
 		if (listenerMap.containsKey(inventory)) {
 			event.setCancelled(true);
-			event.setResult(Event.Result.DENY);
+			event.setResult(Result.DENY);
 
 			Map<ClickType, List<InventoryMenuListener>> actionMap = listenerMap.get(inventory);
 			if (actionMap.containsKey(type)) {
