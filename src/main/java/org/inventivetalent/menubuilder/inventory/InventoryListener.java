@@ -73,6 +73,7 @@ public class InventoryListener implements Listener {
                 if(listenerMap.containsKey(playerOpenInventory) ||eventHandlerMap.containsKey(playerOpenInventory)){
                     event.setCancelled(true);
                     event.setResult(Result.DENY);
+                    return;
                 }
 
 		if (listenerMap.containsKey(inventory)) {
