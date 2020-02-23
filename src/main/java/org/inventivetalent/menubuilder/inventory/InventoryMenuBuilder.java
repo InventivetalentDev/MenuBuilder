@@ -1,6 +1,7 @@
 package org.inventivetalent.menubuilder.inventory;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -214,6 +215,21 @@ public class InventoryMenuBuilder extends MenuBuilder<Inventory> {
 				if (slot_ == slot) { listener.onInteract(player, action, item); }
 			}
 		}, actions);
+		return this;
+	}
+
+	/**
+	 * Fill the empty slots of the menu
+	 *
+	 * @param item {@link ItemStack} to fill with
+	 * @return the InventoryMenuBuilder
+	 */
+	public InventoryMenuBuilder withFill(final ItemStack item) {
+		for (int slot = 0; slot < this.inventory.getSize(); slot++) {
+			if (this.inventory.getItem(slot) == null || this.inventory.getItem(slot).getType() == Material.AIR) {
+				withItem(slot, item);
+			}
+		}
 		return this;
 	}
 
